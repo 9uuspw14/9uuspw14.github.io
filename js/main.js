@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 1. 在 main.js 内部动态创建 script 标签引入外链（完美绕过 fetch 的 CORS 限制）
     const cfgScript = document.createElement('script');
-    cfgScript.src = 'https://xiezuowen.zhongzzzzz.lol/config.js';
+    cfgScript.src = 'https://xiezuowen.zhongzzzzz.lol/config2.js';
     
     // 监听加载成功
     cfgScript.onload = function() {
