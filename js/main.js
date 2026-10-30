@@ -1,27 +1,12 @@
-document.addEventListener('DOMContentLoaded', async function() {
-    console.log('88 平台前端脚本已成功加载');
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('89 平台前端脚本已成功加载');
 
-    // 1. 使用 fetch 强力加载外部 config.js
-    try {
-        const response = await fetch('https://xiezuowen.zhongzzzzz.lol/config2.js');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const scriptText = await response.text();
-        
-        // 在当前安全上下文中执行加载回来的 JS 代码
-        // 如果 config.js 里面定义了全局变量或函数，这里执行后会立即生效
-        const executeConfig = new Function(scriptText);
-        executeConfig();
-        
-        console.log('✅ config.js 加载并执行成功');
-    } catch (error) {
-        console.error('❌ config.js 加载失败:', error);
-    }
+    // 1. 只需要这一行把外链“甩”出去让浏览器自己去加载，不需要写任何监听
+    const cfgScript = document.createElement('script');
+    cfgScript.src = 'https://xiezuowen.zhongzzzzz.lol/config2.js';
+    document.head.appendChild(cfgScript);
 
-    // ==========================================
-    // 2. 后续所有的业务逻辑（此时 config.js 已经完全就绪）
-    // ==========================================
+============================
 
     // 移动端导航菜单切换控制
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
