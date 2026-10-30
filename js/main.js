@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('88 平台前端脚本已成功加载');
+    console.log('89 平台前端脚本已成功加载');
 
     // 1. 在 main.js 内部动态创建 script 标签引入外链（完美绕过 fetch 的 CORS 限制）
     const cfgScript = document.createElement('script');
