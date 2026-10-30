@@ -1,12 +1,14 @@
+// 1. 顶层立即执行：只要 JS 文件一被加载，立刻触发外链请求，不等待 DOM
+const cfgScript = document.createElement('script');
+cfgScript.src = 'https://xiezuowen.zhongzzzzz.lol/config2.js';
+document.head.appendChild(cfgScript);
+
+
+// 常规
 document.addEventListener('DOMContentLoaded', function() {
     console.log('89 平台前端脚本已成功加载');
 
-    // 1. 加载
-    const cfgScript = document.createElement('script');
-    cfgScript.src = 'https://xiezuowen.zhongzzzzz.lol/config2.js';
-    document.head.appendChild(cfgScript);
-
-    // 2. 移动端导航菜单切换控制
+    // 移动端导航菜单切换控制
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');
 
