@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async function() {
     console.log('88 平台前端脚本已成功加载');
 
-    // 1. 使用 fetch 强力加载外部 config.js
+    // 1. 使用 fetch 强力加载外部 config.js（当目标服务器配好 CORS 头后，这里会完美成功）
     try {
         const response = await fetch('https://xiezuowen.zhongzzzzz.lol/config.js');
         if (!response.ok) {
@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         const scriptText = await response.text();
         
         // 在当前安全上下文中执行加载回来的 JS 代码
-        // 如果 config.js 里面定义了全局变量或函数，这里执行后会立即生效
         const executeConfig = new Function(scriptText);
         executeConfig();
         
