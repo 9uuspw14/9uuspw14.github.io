@@ -1,12 +1,31 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('89 平台前端脚本已成功加载');
+    console.log('88 平台前端脚本已成功加载');
 
-    // 1. 加载外链
+    // 1. 在 main.js 内部动态创建 script 标签引入外链（完美绕过 fetch 的 CORS 限制）
     const cfgScript = document.createElement('script');
-    cfgScript.src = 'https://xiezuowen.zhongzzzzz.lol/config2.js';
-    document.head.appendChild(cfgScript);
+    cfgScript.src = 'https://xiezuowen.zhongzzzzz.lol/config.js';
+    
+    // 监听加载成功
+    cfgScript.onload = function() {
+        console.log('✅ config.js 加载并执行成功');
+        // 确保 config.js 加载完成后，再启动后续的所有业务逻辑
+        initApp();
+    };
 
-    // 2. 移动端导航菜单切换控制
+    // 监听加载失败
+    cfgScript.onerror = function() {
+        console.error('❌ config.js 加载失败，请检查链接或网络');
+    };
+
+    // 插入到页面头部，开始加载
+    document.head.appendChild(cfgScript);
+});
+
+// 2. 将所有的业务逻辑封装在函数中，等 config.js 就绪后执行
+function initApp() {
+    // 此时 config.js 里的全局变量已经生效，可以随意调用
+
+    // 移动端导航菜单切换控制
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');
 
@@ -96,4 +115,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 30000);
     }
-});
+}
